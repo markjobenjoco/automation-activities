@@ -1,0 +1,5 @@
+[
+  { "name": "Sauce Labs Backpack", "addToCart": true, "toRemove": false },
+  { "name": "Sauce Labs Fleece Jacket", "addToCart": true, "toRemove": false },
+  { "name": "Test.allTheThings() T-Shirt (Red)", "addToCart": true, "toRemove": true }
+]
