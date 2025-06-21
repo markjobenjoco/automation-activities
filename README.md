@@ -13,7 +13,7 @@ This project contains automated tests and scripts for the automation activity. I
 1. Clone this repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/markjobenjoco/automation-activities.git
    cd automation-activity
    ```
 
