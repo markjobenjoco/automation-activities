@@ -14,7 +14,6 @@ This project contains automated tests and scripts for the automation activity. I
 
    ```bash
    git clone https://github.com/markjobenjoco/automation-activities.git
-   cd automation-activity
    ```
 
 2. Install the dependencies using pnpm:
