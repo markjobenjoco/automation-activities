@@ -28,33 +28,32 @@ test.describe('Sauce Demo login test', () => {
     })
   })
 
-  test('validate error message displayed for invalid credentials', async ({ page, loginPage }) => {
+  test('validate error message displayed for invalid credentials', async ({ loginPage }) => {
     // Generate fake credentials
     const fakeCredentials = { username: faker.internet.email(), password: faker.internet.password({ length: 8 }) }
 
     // Attempt to login with fake credentials
     await loginPage.goto()
-    await FlowHelper.executeLogin(page, fakeCredentials)
+    await FlowHelper.executeLogin(loginPage, fakeCredentials)
     await test.step('Validate error message displayed: password', async () => {
       await expect(loginPage.errorMessage).toHaveText(ERROR_MESSAGES.INVALID_CREDENTIALS)
     })
   })
 
-  test('user successful login', async ({ page, loginPage, homePage }) => {
+  test('user successful login', async ({ loginPage, homePage }) => {
     // Login user
     await loginPage.goto()
-    await FlowHelper.executeLogin(page, userData.standardUser)
-
+    await FlowHelper.executeLogin(loginPage, userData.standardUser)
     // Validate user is logged in
     await test.step('Validate product page displayed', async () => {
       await expect(homePage.productInventory).toBeVisible()
     })
   })
 
-  test('user successful logout', async ({ page, loginPage, homePage }) => {
+  test('user successful logout', async ({ loginPage, homePage }) => {
     // Login user
     await loginPage.goto()
-    await FlowHelper.executeLogin(page, userData.standardUser)
+    await FlowHelper.executeLogin( loginPage, userData.standardUser)
 
     // Validate user is logged in
     await test.step('Validate product page displayed', async () => {
@@ -62,7 +61,7 @@ test.describe('Sauce Demo login test', () => {
     })
 
     // Logout user
-    await FlowHelper.executeLogout(page)
+    await FlowHelper.executeLogout(homePage)
     await test.step('Validate user successfully logs out', async () => {
       await expect(loginPage.loginForm).toBeVisible()
     })
