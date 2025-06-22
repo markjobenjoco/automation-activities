@@ -5,7 +5,7 @@ import userData from '../../config/data/users.json'
 import productData from '../../config/data/products.json'
 
 test.describe('Sauce Demo checkout test - e2e', () => {
-  test('user purchases item', async ({ page, loginPage, homePage, checkoutPage }) => {
+  test('user purchases item', async ({ loginPage, homePage, checkoutPage }) => {
     // Set user details for checkout
     const userDetails = {
       firstName: faker.person.firstName(),
@@ -15,7 +15,7 @@ test.describe('Sauce Demo checkout test - e2e', () => {
 
     // Login user
     await loginPage.goto()
-    await FlowHelper.executeLogin(page, userData.standardUser)
+    await FlowHelper.executeLogin(loginPage, userData.standardUser)
 
     // Add items to cart
     await test.step('Validate product page displayed', async () => {
@@ -60,7 +60,7 @@ test.describe('Sauce Demo checkout test - e2e', () => {
     })
 
     // Logout user
-    await FlowHelper.executeLogout(page)
+    await FlowHelper.executeLogout(homePage)
     await test.step('Validate user successfully logs out', async () => {
       await expect(loginPage.loginForm).toBeVisible()
     })
